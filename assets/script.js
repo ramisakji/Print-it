@@ -19,27 +19,31 @@ const slides = [
 
 const Left = document.querySelector('.arrow_left');
 const Right = document.querySelector('.arrow_right');
-const MyImage = document.getElementById('slide');
+const ChangeImage = document.getElementById('slide');
+const ChangeText = document.getElementById('text');
 let i = 0;
 
 Left.addEventListener("click", () => {
-	PrevSlide
+	PrevSlide();
 });
 
 function PrevSlide(){
 	i--;
 	if (i < 0)
 	i = slides.length - 1;
-    MyImage[i].src = "./assets/images/slideshow/" + slides[i].image;
+    ChangeImage.src = "./assets/images/slideshow/" + slides[i].image;
+	ChangeText.innerHTML = slides[i].tagLine;
 }
 
 Right.addEventListener("click", () => {
-	NextSlide
-});cap
+	NextSlide();
+});
 
 function NextSlide(){
 	i++;
 	if (i == slides.lenght)
 	i = 0;
-    MyImage[i].src = "./assets/images/slideshow/" + slides[i].image;
+    ChangeImage.src = "./assets/images/slideshow/" + slides[i].image;
+	ChangeText.innerHTML = slides[i].tagLine;
 }
+
