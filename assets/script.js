@@ -21,13 +21,20 @@ const Left = document.querySelector('.arrow_left');
 const Right = document.querySelector('.arrow_right');
 const ChangeImage = document.getElementById('slide');
 const ChangeText = document.getElementById('text');
+const ChangeDot = document.querySelectorAll('.dot');
 let i = 0;
 
 Left.addEventListener("click", () => {
-	PrevSlide();
+	PrevImage();
+	DotPosition();
 });
 
-function PrevSlide(){
+Right.addEventListener("click", () => {
+	NextImage();
+	DotPosition();
+});
+
+function PrevImage(){
 	i--;
 	if (i < 0)
 	i = slides.length - 1;
@@ -35,15 +42,16 @@ function PrevSlide(){
 	ChangeText.innerHTML = slides[i].tagLine;
 }
 
-Right.addEventListener("click", () => {
-	NextSlide();
-});
-
-function NextSlide(){
+function NextImage(){
 	i++;
-	if (i == slides.lenght)
+	if (i > slides.length - 1)
 	i = 0;
     ChangeImage.src = "./assets/images/slideshow/" + slides[i].image;
 	ChangeText.innerHTML = slides[i].tagLine;
+}
+
+function DotPosition (){
+	ChangeDot.forEach(ChangeDot => ChangeDot.classList.remove('dot_selected'));
+	ChangeDot[i].classList.add('dot_selected');
 }
 
